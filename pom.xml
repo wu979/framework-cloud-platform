@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.framework.cloud</groupId>
+    <artifactId>framework-cloud-platform</artifactId>
+    <version>1.0.0</version>
+    <name>framework-cloud-platform</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <common.framework.cloud.starter.version>1.0.0</common.framework.cloud.starter.version>
+        <mybatis.framework.cloud.starter.version>1.0.0</mybatis.framework.cloud.starter.version>
+        <cache.framework.cloud.starter.version>1.0.0</cache.framework.cloud.starter.version>
+    </properties>
+
+    <modules>
+        <module>framework-cloud-platform-api</module>
+        <module>framework-cloud-platform-common</module>
+        <module>framework-cloud-platform-domain</module>
+        <module>framework-cloud-platform-infrastructure</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.framework.cloud</groupId>
+                <artifactId>pom-framework-cloud-starter</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

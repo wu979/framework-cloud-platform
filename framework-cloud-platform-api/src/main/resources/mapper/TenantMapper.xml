@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framework.cloud.platform.infrastructure.mapper.TenantMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.framework.cloud.platform.domain.entity.Tenant">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="secret" property="secret"/>
+        <result column="status" property="status"/>
+        <result column="scope" property="scope"/>
+        <result column="grant_type" property="grantType"/>
+        <result column="redirect_uri" property="redirectUri"/>
+        <result column="access_token_validity" property="accessTokenValidity"/>
+        <result column="refresh_token_validity" property="refreshTokenValidity"/>
+        <result column="authorities" property="authorities"/>
+        <result column="approve" property="approve"/>
+        <result column="resource_ids" property="resourceIds"/>
+        <result column="create_id" property="createId"/>
+        <result column="update_id" property="updateId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, code, name, secret, status, scope, grant_type, redirect_uri, access_token_validity, refresh_token_validity, authorities, approve, resource_ids, create_id, update_id, create_time, update_time, deleted, version
+    </sql>
+
+    <select id="page" resultType="com.framework.cloud.platform.common.vo.TenantPageVO">
+        select
+            t.id, t.code, t.name
+        from t_tenant t
+        where t.deleted = 1
+        <if test="param.code != null and param.code != ''">
+            and t.code like (#{param.code,jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="param.name != null and param.name != ''">
+            and t.name like ('%', #{param.name,jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="param.status != null">
+            and t.status = #{param.status}
+        </if>
+    </select>
+</mapper>
