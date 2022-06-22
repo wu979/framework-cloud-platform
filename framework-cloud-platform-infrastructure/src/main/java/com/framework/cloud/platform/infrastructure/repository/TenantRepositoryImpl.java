@@ -9,6 +9,7 @@ import com.framework.cloud.mybatis.repository.impl.BaseRepositoryImpl;
 import com.framework.cloud.platform.common.dto.TenantPageDTO;
 import com.framework.cloud.platform.common.vo.TenantInfoVO;
 import com.framework.cloud.platform.common.vo.TenantPageVO;
+import com.framework.cloud.platform.common.vo.TenantVO;
 import com.framework.cloud.platform.domain.entity.Tenant;
 import com.framework.cloud.platform.domain.repository.TenantRepository;
 import com.framework.cloud.platform.infrastructure.converter.TenantConverter;
@@ -41,10 +42,10 @@ public class TenantRepositoryImpl extends BaseRepositoryImpl<TenantMapper, Tenan
     }
 
     @Override
-    public TenantInfoVO infoByCode(String code) {
+    public TenantVO infoByCode(String code) {
         LambdaQueryWrapper<Tenant> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Tenant::getCode, code);
         Tenant tenant = this.getOne(wrapper);
-        return tenantConverter.info(tenant);
+        return tenantConverter.infoByCode(tenant);
     }
 }

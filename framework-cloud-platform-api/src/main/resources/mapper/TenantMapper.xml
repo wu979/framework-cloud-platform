@@ -9,6 +9,7 @@
         <result column="name" property="name"/>
         <result column="secret" property="secret"/>
         <result column="status" property="status"/>
+        <result column="max_count" property="maxCount"/>
         <result column="scope" property="scope"/>
         <result column="grant_type" property="grantType"/>
         <result column="redirect_uri" property="redirectUri"/>
@@ -27,7 +28,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, code, name, secret, status, scope, grant_type, redirect_uri, access_token_validity, refresh_token_validity, authorities, approve, resource_ids, create_id, update_id, create_time, update_time, deleted, version
+        id, code, name, secret, status, max_count, scope, grant_type, redirect_uri, access_token_validity, refresh_token_validity, authorities, approve, resource_ids, create_id, update_id, create_time, update_time, deleted, version
     </sql>
 
     <select id="page" resultType="com.framework.cloud.platform.common.vo.TenantPageVO">

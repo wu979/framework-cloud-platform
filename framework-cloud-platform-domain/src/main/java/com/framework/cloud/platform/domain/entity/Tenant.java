@@ -43,6 +43,9 @@ public class Tenant extends BaseEntity {
     @ApiModelProperty(value = "状态")
     private TenantStatus status;
 
+    @ApiModelProperty(value = "单用户最大认证次数")
+    private Integer maxCount;
+
     @ApiModelProperty(value = "重定向URI")
     private String redirectUri;
 

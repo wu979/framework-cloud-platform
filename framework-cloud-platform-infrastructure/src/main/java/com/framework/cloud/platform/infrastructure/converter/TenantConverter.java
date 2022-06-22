@@ -5,6 +5,7 @@ import com.framework.cloud.platform.common.enums.ApproveType;
 import com.framework.cloud.platform.common.enums.GrantType;
 import com.framework.cloud.platform.common.enums.ScopeType;
 import com.framework.cloud.platform.common.vo.TenantInfoVO;
+import com.framework.cloud.platform.common.vo.TenantVO;
 import com.framework.cloud.platform.domain.entity.Tenant;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,6 +24,14 @@ import java.util.stream.Stream;
  */
 @Mapper(componentModel = "spring")
 public interface TenantConverter {
+
+    /**
+     * 租户 详情转换
+     *
+     * @param tenant 实体
+     * @return 详情
+     */
+    TenantVO infoByCode(Tenant tenant);
 
     /**
      * 租户 详情转换

@@ -38,6 +38,12 @@ public class TenantDTO {
     @ApiModelProperty(value = "秘钥")
     private String secret;
 
+    @NotNull(message = "单用户最大认证次数不能为空")
+    @Min(value = 10, message = "单用户最大认证次数区间10-999")
+    @Max(value = 999, message = "单用户最大认证次数区间10-999")
+    @ApiModelProperty(value = "单用户最大认证次数")
+    private Integer maxCount;
+
     @NotBlank(message = "重定向URI不能为空")
     @ApiModelProperty(value = "重定向URI")
     private String redirectUri;

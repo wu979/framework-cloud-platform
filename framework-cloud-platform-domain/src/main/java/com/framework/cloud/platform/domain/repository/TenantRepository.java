@@ -35,5 +35,5 @@ public interface TenantRepository extends BaseRepository<Tenant> {
      * @param code 标识
      * @return 详情
      */
-    TenantInfoVO infoByCode(String code);
+    TenantVO infoByCode(String code);
 }

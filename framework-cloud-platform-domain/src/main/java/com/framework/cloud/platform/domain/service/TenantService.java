@@ -6,6 +6,7 @@ import com.framework.cloud.platform.common.dto.TenantPageDTO;
 import com.framework.cloud.platform.common.dto.TenantVerifyDTO;
 import com.framework.cloud.platform.common.vo.TenantInfoVO;
 import com.framework.cloud.platform.common.vo.TenantPageVO;
+import com.framework.cloud.platform.common.vo.TenantVO;
 
 /**
  * 租户 服务层接口
@@ -35,7 +36,7 @@ public interface TenantService {
      * @param code 标识
      * @return 详情
      */
-    TenantInfoVO infoByCode(String code);
+    TenantVO infoByCode(String code);
 
     /**
      * 新增/修改

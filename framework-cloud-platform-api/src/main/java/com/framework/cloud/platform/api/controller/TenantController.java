@@ -10,6 +10,7 @@ import com.framework.cloud.platform.common.dto.TenantPageDTO;
 import com.framework.cloud.platform.common.dto.TenantVerifyDTO;
 import com.framework.cloud.platform.common.vo.TenantInfoVO;
 import com.framework.cloud.platform.common.vo.TenantPageVO;
+import com.framework.cloud.platform.common.vo.TenantVO;
 import com.framework.cloud.platform.domain.service.TenantService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,7 +50,7 @@ public class TenantController {
 
     @ApiOperation(value = "租户详情")
     @GetMapping(value = "/{code}/info/code")
-    public Result<TenantInfoVO> infoByCode(@ApiParam("租户标识") @PathVariable("code") String code) {
+    public Result<TenantVO> infoByCode(@ApiParam("租户标识") @PathVariable("code") String code) {
         return R.success(tenantService.infoByCode(code));
     }
 
