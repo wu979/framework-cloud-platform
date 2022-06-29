@@ -52,13 +52,13 @@ public class TenantServiceImpl implements TenantService {
 
     @Override
     public TenantVO infoByCode(String code) {
-        TenantVO tenantVO = redisCache.get(CacheConstant.TENANT, TenantVO.class);
+        TenantVO tenantVO = redisCache.get(CacheConstant.TENANT + code, TenantVO.class);
         if (ObjectUtil.isNotNull(tenantVO)) {
             return tenantVO;
         }
         tenantVO = tenantRepository.infoByCode(code);
         if (ObjectUtil.isNotNull(tenantVO)) {
-            redisCache.put(CacheConstant.TENANT, tenantVO);
+            redisCache.put(CacheConstant.TENANT + code, tenantVO);
         }
         return tenantVO;
     }
