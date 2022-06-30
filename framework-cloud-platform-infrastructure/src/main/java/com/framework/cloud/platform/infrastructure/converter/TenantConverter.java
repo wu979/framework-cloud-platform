@@ -13,6 +13,7 @@ import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -32,6 +33,13 @@ public interface TenantConverter {
      * @return 详情
      */
     TenantVO infoByCode(Tenant tenant);
+    /**
+     * 租户 详情转换
+     *
+     * @param tenantList 实体
+     * @return 详情
+     */
+    List<TenantVO> tenantList(List<Tenant> tenantList);
 
     /**
      * 租户 详情转换

@@ -8,6 +8,8 @@ import com.framework.cloud.platform.common.vo.TenantInfoVO;
 import com.framework.cloud.platform.common.vo.TenantPageVO;
 import com.framework.cloud.platform.common.vo.TenantVO;
 
+import java.util.List;
+
 /**
  * 租户 服务层接口
  *
@@ -21,6 +23,13 @@ public interface TenantService {
      * @return 数据
      */
     PageVO<TenantPageVO> page(TenantPageDTO param);
+
+    /**
+     * 租户 列表
+     *
+     * @return 列表
+     */
+    List<TenantVO> list();
 
     /**
      * 详情

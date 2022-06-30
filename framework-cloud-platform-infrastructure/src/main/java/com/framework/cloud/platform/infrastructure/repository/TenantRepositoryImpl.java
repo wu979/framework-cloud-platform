@@ -17,6 +17,8 @@ import com.framework.cloud.platform.infrastructure.mapper.TenantMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 租户 数据实现层
  *
@@ -33,6 +35,12 @@ public class TenantRepositoryImpl extends BaseRepositoryImpl<TenantMapper, Tenan
         Page<TenantPageVO> page = PageParam.buildOrder(param);
         IPage<TenantPageVO> list = this.baseMapper.page(page, param);
         return PageVO.page(list);
+    }
+
+    @Override
+    public List<TenantVO> tenantList() {
+        List<Tenant> list = this.list();
+        return tenantConverter.tenantList(list);
     }
 
     @Override

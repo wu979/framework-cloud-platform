@@ -25,6 +25,7 @@ import com.framework.cloud.platform.domain.service.TenantService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -43,6 +44,11 @@ public class TenantServiceImpl implements TenantService {
     @Override
     public PageVO<TenantPageVO> page(TenantPageDTO param) {
         return tenantRepository.page(param);
+    }
+
+    @Override
+    public List<TenantVO> list() {
+        return tenantRepository.tenantList();
     }
 
     @Override
