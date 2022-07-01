@@ -1,7 +1,10 @@
 package com.framework.cloud.platform.domain.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.framework.cloud.cache.cache.RedisCache;
+import com.framework.cloud.cache.annotation.Cache;
+import com.framework.cloud.cache.annotation.Lock;
+import com.framework.cloud.cache.enums.CacheMedium;
+import com.framework.cloud.cache.enums.CacheType;
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.common.utils.AssertUtil;
 import com.framework.cloud.common.utils.CopierUtil;
@@ -37,7 +40,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class TenantServiceImpl implements TenantService {
 
-    private final RedisCache redisCache;
     private final TenantRepository tenantRepository;
     private final SettingRepository settingRepository;
 
@@ -56,17 +58,18 @@ public class TenantServiceImpl implements TenantService {
         return tenantRepository.info(id);
     }
 
+    /**
+     * Aop execution sequence
+     * Lock start
+     * Cache start
+     * Cache end
+     * Lock end
+     */
     @Override
+    @Lock(key = "'" + CacheConstant.TENANT + "'+#code")
+    @Cache(key = "'" + CacheConstant.TENANT + "'+#code", type = CacheType.FULL, medium = CacheMedium.FULL, timeout = CacheConstant.TENANT_TIME)
     public TenantVO infoByCode(String code) {
-        TenantVO tenantVO = redisCache.get(CacheConstant.TENANT + code, TenantVO.class);
-        if (ObjectUtil.isNotNull(tenantVO)) {
-            return tenantVO;
-        }
-        tenantVO = tenantRepository.infoByCode(code);
-        if (ObjectUtil.isNotNull(tenantVO)) {
-            redisCache.put(CacheConstant.TENANT + code, tenantVO);
-        }
-        return tenantVO;
+        return tenantRepository.infoByCode(code);
     }
 
     @Override

@@ -8,4 +8,5 @@ package com.framework.cloud.platform.common.constant;
 public class CacheConstant {
 
     public static final String TENANT = "tenant:";
+    public static final long TENANT_TIME = 7200;
 }
