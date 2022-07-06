@@ -16,6 +16,7 @@ public enum PlatformMsg {
     TENANT_STATUS_UNUSUAL("租户状态异常"),
     TENANT_EXISTS("租户已存在"),
     OAUTH_CODE_NOT_EXISTS("授权码不存在"),
+    GATEWAY_EXISTS("网关已存在"),
     ;
 
     private final String msg;

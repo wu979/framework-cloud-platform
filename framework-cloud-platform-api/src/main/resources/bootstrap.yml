@@ -38,3 +38,4 @@ spring:
           - {"dataId" : swagger.yml, "group" : COMMON, "refresh" : true}
           - {"dataId" : executors.yml, "group" : COMMON, "refresh" : true}
           - {"dataId" : cache.yml, "group" : COMMON, "refresh" : true}
+          - {"dataId" : rabbit.yml, "group" : COMMON, "refresh" : true}

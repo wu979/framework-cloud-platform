@@ -26,6 +26,11 @@
         </dependency>
         <dependency>
             <groupId>com.framework.cloud</groupId>
+            <artifactId>stream-framework-cloud-starter</artifactId>
+            <version>${stream.framework.cloud.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.framework.cloud</groupId>
             <artifactId>framework-cloud-platform-common</artifactId>
             <version>${version}</version>
         </dependency>
