@@ -1,10 +1,11 @@
 package com.framework.cloud.platform.infrastructure.converter;
 
-import com.framework.cloud.platform.common.vo.*;
+import com.framework.cloud.platform.common.vo.GatewayRouteInfoVO;
+import com.framework.cloud.platform.common.vo.GatewayRouteListVO;
 import com.framework.cloud.platform.domain.entity.GatewayRoute;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+
+import java.util.List;
 
 /**
  * 动态路由 转换器
@@ -22,4 +23,11 @@ public interface GatewayRouteConverter {
      */
     GatewayRouteInfoVO info(GatewayRoute gatewayRoute);
 
+    /**
+     * 动态路由 列表转换
+     *
+     * @param routeList 列表
+     * @return 列表
+     */
+    List<GatewayRouteListVO> routeList(List<GatewayRoute> routeList);
 }

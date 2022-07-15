@@ -39,6 +39,12 @@ public class GatewayRouteController {
         return R.success(gatewayRouteService.page(param));
     }
 
+    @ApiOperation(value = "动态路由列表")
+    @GetMapping(value = "/list")
+    public Result<List<GatewayRouteListVO>> list() {
+        return R.success(gatewayRouteService.list());
+    }
+
     @ApiOperation(value = "动态路由详情")
     @GetMapping(value = "/{id}/info")
     public Result<GatewayRouteInfoVO> info(@ApiParam("主键") @PathVariable("id") Long id) {
@@ -55,12 +61,6 @@ public class GatewayRouteController {
     @PostMapping(value = "/update")
     public Result<Boolean> update(@ApiParam("动态路由") @Valid @Validated(Update.class) @RequestBody GatewayRouteDTO param) {
         return R.success(gatewayRouteService.saveUpdate(param));
-    }
-
-    @ApiOperation(value = "动态路由删除")
-    @DeleteMapping(value = "/removes")
-    public Result<Boolean> removes(@ApiParam("主键") @RequestBody List<Long> ids) {
-        return R.success(gatewayRouteService.removes(ids));
     }
 
 }

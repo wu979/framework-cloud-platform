@@ -2,9 +2,13 @@ package com.framework.cloud.platform.domain.repository;
 
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.BaseRepository;
-import com.framework.cloud.platform.common.vo.*;
-import com.framework.cloud.platform.common.dto.*;
+import com.framework.cloud.platform.common.dto.GatewayRoutePageDTO;
+import com.framework.cloud.platform.common.vo.GatewayRouteInfoVO;
+import com.framework.cloud.platform.common.vo.GatewayRouteListVO;
+import com.framework.cloud.platform.common.vo.GatewayRoutePageVO;
 import com.framework.cloud.platform.domain.entity.GatewayRoute;
+
+import java.util.List;
 
 /**
  * 动态路由 数据层接口
@@ -20,6 +24,13 @@ public interface GatewayRouteRepository extends BaseRepository<GatewayRoute> {
      * @return 数据
      */
     PageVO<GatewayRoutePageVO> page(GatewayRoutePageDTO param);
+
+    /**
+     * 动态路由 列表
+     *
+     * @return 数据
+     */
+    List<GatewayRouteListVO> routeList();
 
     /**
      * 详情

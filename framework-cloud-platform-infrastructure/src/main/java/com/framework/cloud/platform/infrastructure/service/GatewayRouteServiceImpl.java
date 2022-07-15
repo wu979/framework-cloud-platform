@@ -1,5 +1,6 @@
-package com.framework.cloud.platform.domain.service.impl;
+package com.framework.cloud.platform.infrastructure.service;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.common.utils.AssertUtil;
@@ -8,6 +9,7 @@ import com.framework.cloud.platform.common.dto.GatewayRouteDTO;
 import com.framework.cloud.platform.common.dto.GatewayRoutePageDTO;
 import com.framework.cloud.platform.common.msg.PlatformMsg;
 import com.framework.cloud.platform.common.vo.GatewayRouteInfoVO;
+import com.framework.cloud.platform.common.vo.GatewayRouteListVO;
 import com.framework.cloud.platform.common.vo.GatewayRoutePageVO;
 import com.framework.cloud.platform.domain.entity.GatewayRoute;
 import com.framework.cloud.platform.domain.repository.GatewayRouteRepository;
@@ -34,6 +36,15 @@ public class GatewayRouteServiceImpl implements GatewayRouteService {
     }
 
     @Override
+    public List<GatewayRouteListVO> list() {
+        List<GatewayRouteListVO> gatewayRouteList = gatewayRouteRepository.routeList();
+        if (CollectionUtil.isEmpty(gatewayRouteList)) {
+            return CollectionUtil.newArrayList();
+        }
+        return gatewayRouteList;
+    }
+
+    @Override
     public GatewayRouteInfoVO info(Long id) {
         return gatewayRouteRepository.info(id);
     }
@@ -54,11 +65,6 @@ public class GatewayRouteServiceImpl implements GatewayRouteService {
             CopierUtil.copyProperties(param, gatewayRoute);
         }
         return gatewayRouteRepository.saveOrUpdate(gatewayRoute);
-    }
-
-    @Override
-    public boolean removes(List<Long> ids) {
-        return gatewayRouteRepository.removeByIds(ids);
     }
 
 }

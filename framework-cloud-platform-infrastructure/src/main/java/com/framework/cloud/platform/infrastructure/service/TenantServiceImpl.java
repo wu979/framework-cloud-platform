@@ -1,4 +1,4 @@
-package com.framework.cloud.platform.domain.service.impl;
+package com.framework.cloud.platform.infrastructure.service;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.framework.cloud.cache.annotation.Cache;
@@ -8,7 +8,7 @@ import com.framework.cloud.cache.enums.CacheType;
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.common.utils.AssertUtil;
 import com.framework.cloud.common.utils.CopierUtil;
-import com.framework.cloud.platform.common.constant.CacheConstant;
+import com.framework.cloud.platform.common.constant.PlatformConstant;
 import com.framework.cloud.platform.common.dto.TenantDTO;
 import com.framework.cloud.platform.common.dto.TenantPageDTO;
 import com.framework.cloud.platform.common.dto.TenantVerifyDTO;
@@ -66,8 +66,8 @@ public class TenantServiceImpl implements TenantService {
      * Lock end
      */
     @Override
-    @Lock(key = "'" + CacheConstant.TENANT + "'+#code")
-    @Cache(key = "'" + CacheConstant.TENANT + "'+#code", type = CacheType.FULL, medium = CacheMedium.FULL, timeout = CacheConstant.TENANT_TIME)
+    @Lock(key = "'" + PlatformConstant.TENANT + "'+#code")
+    @Cache(key = "'" + PlatformConstant.TENANT + "'+#code", type = CacheType.FULL, medium = CacheMedium.FULL, timeout = PlatformConstant.TENANT_TIME)
     public TenantVO infoByCode(String code) {
         return tenantRepository.infoByCode(code);
     }

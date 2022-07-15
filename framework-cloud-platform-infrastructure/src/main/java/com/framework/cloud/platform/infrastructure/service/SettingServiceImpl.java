@@ -1,4 +1,4 @@
-package com.framework.cloud.platform.domain.service.impl;
+package com.framework.cloud.platform.infrastructure.service;
 
 import com.framework.cloud.platform.common.enums.SwitchType;
 import com.framework.cloud.platform.common.vo.SettingInfoVO;

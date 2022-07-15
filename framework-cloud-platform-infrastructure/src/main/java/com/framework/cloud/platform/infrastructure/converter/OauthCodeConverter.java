@@ -1,4 +1,4 @@
-package com.framework.cloud.platform.domain.converter;
+package com.framework.cloud.platform.infrastructure.converter;
 
 import com.framework.cloud.platform.common.vo.OauthCodeInfoVO;
 import com.framework.cloud.platform.domain.entity.OauthCode;

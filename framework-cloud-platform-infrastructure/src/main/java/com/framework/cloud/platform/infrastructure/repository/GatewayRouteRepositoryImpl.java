@@ -8,6 +8,7 @@ import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.impl.BaseRepositoryImpl;
 import com.framework.cloud.platform.common.dto.GatewayRoutePageDTO;
 import com.framework.cloud.platform.common.vo.GatewayRouteInfoVO;
+import com.framework.cloud.platform.common.vo.GatewayRouteListVO;
 import com.framework.cloud.platform.common.vo.GatewayRoutePageVO;
 import com.framework.cloud.platform.domain.entity.GatewayRoute;
 import com.framework.cloud.platform.domain.repository.GatewayRouteRepository;
@@ -15,6 +16,8 @@ import com.framework.cloud.platform.infrastructure.converter.GatewayRouteConvert
 import com.framework.cloud.platform.infrastructure.mapper.GatewayRouteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 动态路由 数据实现层
@@ -32,6 +35,12 @@ public class GatewayRouteRepositoryImpl extends BaseRepositoryImpl<GatewayRouteM
         Page<GatewayRoutePageVO> page = PageParam.buildOrder(param);
         IPage<GatewayRoutePageVO> list = this.baseMapper.page(page, param);
         return PageVO.page(list);
+    }
+
+    @Override
+    public List<GatewayRouteListVO> routeList() {
+        List<GatewayRoute> list = this.list();
+        return gatewayRouteConverter.routeList(list);
     }
 
     @Override
