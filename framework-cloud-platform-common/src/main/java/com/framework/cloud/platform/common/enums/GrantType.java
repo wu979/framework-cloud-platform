@@ -1,5 +1,6 @@
 package com.framework.cloud.platform.common.enums;
 
+import com.framework.cloud.swagger.annotation.SwaggerDisplayEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,6 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
+@SwaggerDisplayEnum(label = "grant")
 public enum GrantType {
 
     /**
