@@ -1,7 +1,7 @@
 package com.framework.cloud.platform.common.enums;
 
-import com.baomidou.mybatisplus.annotation.IEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.framework.cloud.common.base.BaseEnum;
 import com.framework.cloud.swagger.annotation.SwaggerDisplayEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @SwaggerDisplayEnum
-public enum TenantStatus implements IEnum<String> {
+public enum TenantStatus implements BaseEnum<String> {
 
     /** code 第三方枚举 value 数据库 label 汉译 */
     REVIEWED(0, "待审核"),
