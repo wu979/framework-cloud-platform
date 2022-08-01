@@ -6,12 +6,12 @@ import com.framework.cloud.core.event.ApplicationInitializingEvent;
 import com.framework.cloud.platform.common.constant.PlatformConstant;
 import com.framework.cloud.platform.common.vo.TenantVO;
 import com.framework.cloud.platform.domain.service.TenantService;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -23,12 +23,14 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class TenantPostProcessor implements ApplicationListener<ApplicationInitializingEvent> {
 
-    private final LocalCache localCache;
-    private final RedisCache redisCache;
-    private final TenantService tenantService;
+    @Resource
+    private LocalCache localCache;
+    @Resource
+    private RedisCache redisCache;
+    @Resource
+    private TenantService tenantService;
 
     @SneakyThrows
     @Override
