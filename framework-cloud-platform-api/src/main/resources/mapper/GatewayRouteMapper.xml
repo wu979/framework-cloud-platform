@@ -11,6 +11,7 @@
         <result column="filters" property="filters"/>
         <result column="sort" property="sort"/>
         <result column="remarks" property="remarks"/>
+        <result column="enable" property="enable"/>
         <result column="create_id" property="createId"/>
         <result column="update_id" property="updateId"/>
         <result column="create_time" property="createTime"/>
@@ -21,12 +22,12 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, path, predicates, filters, sort, remarks, create_id, update_id, create_time, update_time, deleted, version
+        id, name, path, predicates, filters, sort, remarks, enable, create_id, update_id, create_time, update_time, deleted, version
     </sql>
 
     <select id="page" resultType="com.framework.cloud.platform.common.vo.GatewayRoutePageVO">
         select
-            gr.id, gr.name, gr.path
+            gr.id, gr.name, gr.path, gr.enable
         from t_gateway_route gr
         where gr.deleted = 1
         <if test="param.name != null and param.name != ''">
@@ -34,6 +35,9 @@
         </if>
         <if test="param.path != null and param.path != ''">
             and gr.path like(#{param.path,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="param.enable != null">
+            and gr.enable = #{param.enable,jdbcType=BOOLEAN}
         </if>
     </select>
 </mapper>

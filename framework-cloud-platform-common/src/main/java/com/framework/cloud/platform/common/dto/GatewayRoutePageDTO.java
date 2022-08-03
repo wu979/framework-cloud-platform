@@ -19,4 +19,7 @@ public class GatewayRoutePageDTO extends BasePage {
 
     @ApiModelProperty(value = "路由")
     private String path;
+
+    @ApiModelProperty(value = "是否启用")
+    private Boolean enable;
 }

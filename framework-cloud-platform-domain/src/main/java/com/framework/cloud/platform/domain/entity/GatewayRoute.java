@@ -48,4 +48,6 @@ public class GatewayRoute extends BaseEntity {
     @ApiModelProperty(value = "备注")
     private String remarks;
 
+    @ApiModelProperty(value = "是否启用")
+    private Boolean enable;
 }

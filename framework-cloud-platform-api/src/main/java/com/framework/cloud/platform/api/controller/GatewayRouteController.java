@@ -63,4 +63,21 @@ public class GatewayRouteController {
         return R.success(gatewayRouteService.saveUpdate(param));
     }
 
+    @ApiOperation(value = "动态路由快速新增")
+    @PostMapping(value = "/fast/save")
+    public Result<Boolean> fastSave(@ApiParam("动态路由") @Valid @RequestBody GatewayFastRouteDTO param) {
+        return R.success(gatewayRouteService.fastSave(param));
+    }
+
+    @ApiOperation(value = "动态路由启用")
+    @PostMapping(value = "/{id}/enable")
+    public Result<Boolean> enable(@ApiParam("主键") @PathVariable("id") Long id) {
+        return R.success(gatewayRouteService.enable(id, Boolean.TRUE));
+    }
+
+    @ApiOperation(value = "动态路由禁用")
+    @PostMapping(value = "/{id}/disable")
+    public Result<Boolean> disable(@ApiParam("主键") @PathVariable("id") Long id) {
+        return R.success(gatewayRouteService.enable(id, Boolean.FALSE));
+    }
 }

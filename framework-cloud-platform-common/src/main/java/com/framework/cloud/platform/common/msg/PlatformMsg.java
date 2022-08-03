@@ -17,6 +17,9 @@ public enum PlatformMsg {
     TENANT_EXISTS("租户已存在"),
     OAUTH_CODE_NOT_EXISTS("授权码不存在"),
     GATEWAY_EXISTS("网关已存在"),
+    GATEWAY_ENABLE("网关已启用，请勿重复操作"),
+    GATEWAY_DISABLE("网关已禁用，请勿重复操作"),
+    PUBLISH_GATEWAY_ROUTE_ERROR("动态网关发布事件失败"),
     ;
 
     private final String msg;

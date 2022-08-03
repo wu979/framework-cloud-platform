@@ -1,6 +1,7 @@
 package com.framework.cloud.platform.infrastructure.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.framework.cloud.holder.utils.OauthUtil;
 import com.framework.cloud.mybatis.repository.impl.BaseRepositoryImpl;
 import com.framework.cloud.platform.common.vo.SettingInfoVO;
 import com.framework.cloud.platform.domain.entity.Setting;
@@ -24,7 +25,7 @@ public class SettingRepositoryImpl extends BaseRepositoryImpl<SettingMapper, Set
     @Override
     public Setting entity() {
         LambdaQueryWrapper<Setting> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(Setting::getTenantId, 1L);
+        wrapper.eq(Setting::getTenantId, OauthUtil.getTenantId());
         return this.getOne(wrapper);
     }
 

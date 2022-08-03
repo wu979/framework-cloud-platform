@@ -1,34 +1,28 @@
-package com.framework.cloud.platform.common.vo;
+package com.framework.cloud.platform.common.dto;
 
-import com.framework.cloud.common.base.BaseVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
- * 动态路由 详情VO
+ * 动态路由 快速新增DTO
  *
  * @author wusiwei
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class GatewayRouteInfoVO extends BaseVO {
+public class GatewayFastRouteDTO {
 
-    @ApiModelProperty(value = "主键")
-    private Long id;
-
+    @NotBlank(message = "名称不能为空")
     @ApiModelProperty(value = "名称")
     private String name;
 
+    @NotBlank(message = "路由不能为空")
     @ApiModelProperty(value = "路由")
     private String path;
 
-    @ApiModelProperty(value = "断言")
-    private String predicates;
-
-    @ApiModelProperty(value = "过滤")
-    private String filters;
-
+    @NotNull(message = "排序不能为空")
     @ApiModelProperty(value = "排序")
     private Integer sort;
 

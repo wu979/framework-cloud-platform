@@ -3,6 +3,7 @@ package com.framework.cloud.platform.infrastructure.service;
 import cn.hutool.core.util.ObjectUtil;
 import com.framework.cloud.cache.annotation.Cache;
 import com.framework.cloud.cache.annotation.Lock;
+import com.framework.cloud.cache.cache.RedisCache;
 import com.framework.cloud.cache.enums.CacheMedium;
 import com.framework.cloud.cache.enums.CacheType;
 import com.framework.cloud.common.base.PageVO;
@@ -40,6 +41,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class TenantServiceImpl implements TenantService {
 
+    private final RedisCache redisCache;
     private final TenantRepository tenantRepository;
     private final SettingRepository settingRepository;
 
@@ -93,7 +95,11 @@ public class TenantServiceImpl implements TenantService {
         tenant.setScope(param.getScopeList().stream().map(ScopeType::getScope).collect(Collectors.joining(",")));
         tenant.setAuthorities(String.join(",", param.getAuthoritieList()));
         tenant.setResourceIds(String.join(",", param.getResourceIdList()));
-        return tenantRepository.saveOrUpdate(tenant);
+        boolean flag = tenantRepository.saveOrUpdate(tenant);
+        if (flag) {
+            redisCache.delete(PlatformConstant.TENANT + param.getCode());
+        }
+        return flag;
     }
 
     @Override

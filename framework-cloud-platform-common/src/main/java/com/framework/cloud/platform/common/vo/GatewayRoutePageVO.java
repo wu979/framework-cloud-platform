@@ -1,9 +1,7 @@
 package com.framework.cloud.platform.common.vo;
 
-import com.framework.cloud.common.base.BaseVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * 动态路由 分页VO
@@ -11,8 +9,7 @@ import lombok.EqualsAndHashCode;
  * @author wusiwei
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class GatewayRoutePageVO extends BaseVO {
+public class GatewayRoutePageVO {
 
     @ApiModelProperty(value = "主键")
     private Long id;
@@ -23,4 +20,6 @@ public class GatewayRoutePageVO extends BaseVO {
     @ApiModelProperty(value = "路由")
     private String path;
 
+    @ApiModelProperty(value = "是否启用")
+    private Boolean enable;
 }

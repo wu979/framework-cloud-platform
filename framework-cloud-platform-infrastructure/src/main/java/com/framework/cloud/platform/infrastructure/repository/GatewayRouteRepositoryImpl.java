@@ -39,7 +39,9 @@ public class GatewayRouteRepositoryImpl extends BaseRepositoryImpl<GatewayRouteM
 
     @Override
     public List<GatewayRouteListVO> routeList() {
-        List<GatewayRoute> list = this.list();
+        LambdaQueryWrapper<GatewayRoute> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(GatewayRoute::getEnable, Boolean.TRUE);
+        List<GatewayRoute> list = this.list(wrapper);
         return gatewayRouteConverter.routeList(list);
     }
 
