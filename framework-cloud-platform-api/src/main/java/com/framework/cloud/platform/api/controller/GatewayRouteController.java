@@ -5,6 +5,8 @@ import com.framework.cloud.common.group.Save;
 import com.framework.cloud.common.group.Update;
 import com.framework.cloud.common.result.R;
 import com.framework.cloud.common.result.Result;
+import com.framework.cloud.holder.model.LoginUser;
+import com.framework.cloud.holder.utils.OauthUtil;
 import com.framework.cloud.platform.common.dto.*;
 import com.framework.cloud.platform.common.vo.*;
 import com.framework.cloud.platform.domain.service.GatewayRouteService;
@@ -42,6 +44,7 @@ public class GatewayRouteController {
     @ApiOperation(value = "动态路由列表")
     @GetMapping(value = "/list")
     public Result<List<GatewayRouteListVO>> list() {
+        LoginUser user = OauthUtil.getUser();
         return R.success(gatewayRouteService.list());
     }
 
