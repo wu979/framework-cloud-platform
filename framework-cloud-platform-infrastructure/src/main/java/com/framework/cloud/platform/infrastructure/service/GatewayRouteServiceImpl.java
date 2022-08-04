@@ -64,23 +64,20 @@ public class GatewayRouteServiceImpl implements GatewayRouteService {
     public boolean saveUpdate(GatewayRouteDTO param) {
         GatewayRoute gatewayRoute;
         GatewayRoute exist = gatewayRouteRepository.getByName(param.getName());
-        boolean saveOrUpdate;
         if (ObjectUtil.isNull(param.getId())) {
             AssertUtil.nonNull(exist, PlatformMsg.GATEWAY_EXISTS.getMsg());
             gatewayRoute = new GatewayRoute();
             CopierUtil.copyProperties(param, gatewayRoute);
-            saveOrUpdate = true;
         } else {
             gatewayRoute = gatewayRouteRepository.getByIdNotNull(param.getId());
             if (ObjectUtil.isNotNull(exist)) {
                 AssertUtil.isTrue(gatewayRoute.getId().equals(exist.getId()), PlatformMsg.GATEWAY_EXISTS.getMsg());
             }
             CopierUtil.copyProperties(param, gatewayRoute);
-            saveOrUpdate = false;
         }
         gatewayRoute.setPredicates(FastJsonUtil.toJSONString(param.getPredicateList()));
         gatewayRoute.setFilters(FastJsonUtil.toJSONString(param.getFilterList()));
-        return publishGatewayRoute(saveOrUpdate, gatewayRoute);
+        return publishGatewayRoute(gatewayRoute);
     }
 
     @Override
@@ -99,7 +96,7 @@ public class GatewayRouteServiceImpl implements GatewayRouteService {
         gatewayRoute.setFilters(filters(name));
         gatewayRoute.setSort(param.getSort());
         gatewayRoute.setRemarks(param.getRemarks());
-        return publishGatewayRoute(Boolean.TRUE, gatewayRoute);
+        return publishGatewayRoute(gatewayRoute);
     }
 
     @Override
@@ -108,7 +105,7 @@ public class GatewayRouteServiceImpl implements GatewayRouteService {
         if (enable) {
             AssertUtil.isFalse(gatewayRoute.getEnable(), PlatformMsg.GATEWAY_ENABLE.getMsg());
             gatewayRoute.setEnable(true);
-            return publishGatewayRoute(true, gatewayRoute);
+            return publishGatewayRoute(gatewayRoute);
         } else {
             AssertUtil.isTrue(gatewayRoute.getEnable(), PlatformMsg.GATEWAY_DISABLE.getMsg());
             gatewayRoute.setEnable(false);
@@ -139,12 +136,11 @@ public class GatewayRouteServiceImpl implements GatewayRouteService {
         return FastJsonUtil.toJSONString(filtersList);
     }
 
-    public boolean publishGatewayRoute(Boolean saveOrUpdate, GatewayRoute gatewayRoute) {
+    public boolean publishGatewayRoute(GatewayRoute gatewayRoute) {
         boolean flag = gatewayRouteRepository.saveOrUpdate(gatewayRoute);
         if (flag && BooleanUtil.isTrue(gatewayRoute.getEnable())) {
             GatewayRouteEvent event = new GatewayRouteEvent();
             CopierUtil.copyProperties(gatewayRoute, event);
-            event.setSaveOrUpdate(saveOrUpdate);
             boolean publish = platformPublish.publishGatewayRoute(event);
             AssertUtil.isTrue(publish, PlatformMsg.PUBLISH_GATEWAY_ROUTE_ERROR.getMsg());
         }
