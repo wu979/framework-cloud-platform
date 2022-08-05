@@ -1,10 +1,8 @@
 package com.framework.cloud.platform.common.vo;
 
-import com.framework.cloud.common.base.BaseVO;
 import com.framework.cloud.platform.common.enums.TenantStatus;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * 租户 分页VO
@@ -12,8 +10,7 @@ import lombok.EqualsAndHashCode;
  * @author wusiwei
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class TenantPageVO extends BaseVO {
+public class TenantPageVO {
 
     @ApiModelProperty(value = "主键")
     private Long id;
