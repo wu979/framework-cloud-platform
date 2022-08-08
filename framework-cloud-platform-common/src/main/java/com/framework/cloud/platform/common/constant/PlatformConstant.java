@@ -13,6 +13,16 @@ public class PlatformConstant {
     public static final String TENANT = "tenant:";
 
     /**
+     * 支付渠道缓存
+     */
+    public static final String CHANNEL = "pay:channel:";
+
+    /**
+     * 支付方式缓存
+     */
+    public static final String MODE = "pay:mode:";
+
+    /**
      * 缓存时间
      */
     public static final long TENANT_TIME = 7200;

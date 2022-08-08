@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framework.cloud.platform.infrastructure.mapper.PayChannelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.framework.cloud.platform.domain.entity.PayChannel">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="type" property="type"/>
+        <result column="app_key" property="appKey"/>
+        <result column="app_secret" property="appSecret"/>
+        <result column="private_key" property="privateKey"/>
+        <result column="public_key" property="publicKey"/>
+        <result column="external_public_key" property="externalPublicKey"/>
+        <result column="remarks" property="remarks"/>
+        <result column="enable" property="enable"/>
+        <result column="create_id" property="createId"/>
+        <result column="update_id" property="updateId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, code, name, type, app_key, app_secret, private_key, public_key, external_public_key, remarks, enable, create_id, update_id, create_time, update_time, deleted, version
+    </sql>
+
+    <select id="page" resultType="com.framework.cloud.platform.common.vo.PayChannelPageVO">
+        select
+            pc.id, pc.code, pc.name, pc.type, pc.enable, pc.create_id, pc.update_id, pc.create_time, pc.update_time
+        from t_pay_channel pc
+        where pc.deleted = 1
+        <if test="param.code != null and param.code != ''">
+            and pc.code like(#{param.code,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="param.name != null and param.name != ''">
+            and pc.name like(#{param.name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="param.type != null">
+            and pc.type = #{param.type}
+        </if>
+        <if test="param.enable != null">
+            and pc.enable = #{param.enable,jdbcType=BOOLEAN}
+        </if>
+    </select>
+</mapper>
