@@ -13,6 +13,7 @@ import com.framework.cloud.platform.common.dto.PayModeDTO;
 import com.framework.cloud.platform.common.dto.PayModePageDTO;
 import com.framework.cloud.platform.common.enums.PayChannelType;
 import com.framework.cloud.platform.common.msg.PlatformMsg;
+import com.framework.cloud.platform.common.vo.PayModeAvailableVO;
 import com.framework.cloud.platform.common.vo.PayModeInfoVO;
 import com.framework.cloud.platform.common.vo.PayModeListVO;
 import com.framework.cloud.platform.common.vo.PayModePageVO;
@@ -49,7 +50,12 @@ public class PayModeServiceImpl implements PayModeService {
     }
 
     @Override
-    @Cache(key = "'" + PlatformConstant.MODE + "'+#id", type = CacheType.FULL, medium = CacheMedium.FULL)
+    public List<PayModeAvailableVO> availableList() {
+        return payModeRepository.availableList();
+    }
+
+    @Override
+    @Cache(key = "'" + PlatformConstant.MODE + "'+#id", type = CacheType.READ_WRITE, medium = CacheMedium.FULL)
     public PayModeInfoVO info(Long id) {
         return payModeRepository.info(id);
     }
@@ -70,7 +76,7 @@ public class PayModeServiceImpl implements PayModeService {
     }
 
     @Override
-    @Cache(key = "'" + PlatformConstant.MODE + "'+#param.id", type = CacheType.DELETE, medium = CacheMedium.FULL)
+    @Cache(key = "'" + PlatformConstant.MODE + "'+#param.id", type = CacheType.DEL, medium = CacheMedium.FULL)
     public boolean update(PayModeDTO param) {
         PayChannel payChannel = payChannelRepository.getByIdNotNull(param.getChannelId());
         if (PayChannelType.WX.equals(payChannel.getType())) {
@@ -88,7 +94,7 @@ public class PayModeServiceImpl implements PayModeService {
     }
 
     @Override
-    @Cache(key = "'" + PlatformConstant.MODE + "'+#id", type = CacheType.DELETE, medium = CacheMedium.FULL)
+    @Cache(key = "'" + PlatformConstant.MODE + "'+#id", type = CacheType.DEL, medium = CacheMedium.FULL)
     public boolean enable(Long id, boolean enable) {
         PayMode payMode = payModeRepository.getByIdNotNull(id);
         if (enable) {

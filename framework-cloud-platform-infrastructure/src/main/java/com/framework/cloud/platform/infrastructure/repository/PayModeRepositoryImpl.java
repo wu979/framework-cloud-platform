@@ -8,6 +8,7 @@ import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.impl.BaseRepositoryImpl;
 import com.framework.cloud.platform.common.dto.PayModePageDTO;
 import com.framework.cloud.platform.common.enums.PayModeType;
+import com.framework.cloud.platform.common.vo.PayModeAvailableVO;
 import com.framework.cloud.platform.common.vo.PayModeInfoVO;
 import com.framework.cloud.platform.common.vo.PayModeListVO;
 import com.framework.cloud.platform.common.vo.PayModePageVO;
@@ -44,6 +45,11 @@ public class PayModeRepositoryImpl extends BaseRepositoryImpl<PayModeMapper, Pay
         wrapper.eq(PayMode::getChannelId, id);
         List<PayMode> payModeList = this.list(wrapper);
         return payModeConverter.list(payModeList);
+    }
+
+    @Override
+    public List<PayModeAvailableVO> availableList() {
+        return this.baseMapper.availableList();
     }
 
     @Override

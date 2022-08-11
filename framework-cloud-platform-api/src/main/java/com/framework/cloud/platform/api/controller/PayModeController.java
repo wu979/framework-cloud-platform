@@ -45,6 +45,12 @@ public class PayModeController {
         return R.success(payModeService.list(id));
     }
 
+    @ApiOperation(value = "支付方式可用列表")
+    @GetMapping(value = "/available/list")
+    public Result<List<PayModeAvailableVO>> list() {
+        return R.success(payModeService.availableList());
+    }
+
     @ApiOperation(value = "支付方式详情")
     @GetMapping(value = "/{id}/info")
     public Result<PayModeInfoVO> info(@ApiParam("主键") @PathVariable("id") Long id) {

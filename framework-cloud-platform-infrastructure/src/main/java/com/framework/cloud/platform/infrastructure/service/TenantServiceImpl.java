@@ -69,7 +69,7 @@ public class TenantServiceImpl implements TenantService {
      */
     @Override
     @Lock(key = "'" + PlatformConstant.TENANT + "'+#code")
-    @Cache(key = "'" + PlatformConstant.TENANT + "'+#code", type = CacheType.FULL, medium = CacheMedium.FULL, timeout = PlatformConstant.TENANT_TIME)
+    @Cache(key = "'" + PlatformConstant.TENANT + "'+#code", type = CacheType.READ_WRITE, medium = CacheMedium.FULL, timeout = PlatformConstant.TENANT_TIME)
     public TenantVO infoByCode(String code) {
         return tenantRepository.infoByCode(code);
     }

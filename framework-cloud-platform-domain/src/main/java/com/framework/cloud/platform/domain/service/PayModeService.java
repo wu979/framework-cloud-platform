@@ -3,6 +3,7 @@ package com.framework.cloud.platform.domain.service;
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.platform.common.dto.PayModeDTO;
 import com.framework.cloud.platform.common.dto.PayModePageDTO;
+import com.framework.cloud.platform.common.vo.PayModeAvailableVO;
 import com.framework.cloud.platform.common.vo.PayModeInfoVO;
 import com.framework.cloud.platform.common.vo.PayModeListVO;
 import com.framework.cloud.platform.common.vo.PayModePageVO;
@@ -30,6 +31,13 @@ public interface PayModeService {
      * @return 支付方式列表
      */
     List<PayModeListVO> list(Long id);
+
+    /**
+     * 支付方式 可用列表
+     *
+     * @return 支付方式列表
+     */
+    List<PayModeAvailableVO> availableList();
 
     /**
      * 详情

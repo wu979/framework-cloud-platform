@@ -36,7 +36,7 @@ public class PayChannelServiceImpl implements PayChannelService {
     }
 
     @Override
-    @Cache(key = "'" + PlatformConstant.CHANNEL + "'+#id", type = CacheType.FULL, medium = CacheMedium.FULL)
+    @Cache(key = "'" + PlatformConstant.CHANNEL + "'+#id", type = CacheType.READ_WRITE, medium = CacheMedium.FULL)
     public PayChannelInfoVO info(Long id) {
         return payChannelRepository.info(id);
     }
@@ -51,7 +51,7 @@ public class PayChannelServiceImpl implements PayChannelService {
     }
 
     @Override
-    @Cache(key = "'" + PlatformConstant.CHANNEL + "'+#param.id", type = CacheType.DELETE, medium = CacheMedium.FULL)
+    @Cache(key = "'" + PlatformConstant.CHANNEL + "'+#param.id", type = CacheType.DEL, medium = CacheMedium.FULL)
     public boolean update(PayChannelDTO param) {
         PayChannel payChannel = payChannelRepository.getByIdNotNull(param.getId());
         PayChannelInfoVO exist = payChannelRepository.info(param.getCode());
@@ -63,7 +63,7 @@ public class PayChannelServiceImpl implements PayChannelService {
     }
 
     @Override
-    @Cache(key = "'" + PlatformConstant.CHANNEL + "'+#id", type = CacheType.DELETE, medium = CacheMedium.FULL)
+    @Cache(key = "'" + PlatformConstant.CHANNEL + "'+#id", type = CacheType.DEL, medium = CacheMedium.FULL)
     public boolean enable(Long id, boolean enable) {
         PayChannel payChannel = payChannelRepository.getByIdNotNull(id);
         if (enable) {
