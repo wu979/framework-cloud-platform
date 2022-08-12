@@ -61,6 +61,7 @@ public class PayChannelController {
     @ApiOperation(value = "支付渠道启用")
     @PostMapping(value = "/{id}/enable")
     public Result<Boolean> enable(@ApiParam("主键") @PathVariable("id") Long id) {
+        int i = 1 / 0;
         return R.success(payChannelService.enable(id, Boolean.TRUE));
     }
 
