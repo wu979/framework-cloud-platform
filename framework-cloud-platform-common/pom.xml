@@ -24,5 +24,10 @@
             <artifactId>swagger-framework-cloud-starter</artifactId>
             <version>${swagger.framework.cloud.starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.framework.cloud</groupId>
+            <artifactId>mybatis-framework-cloud-starter</artifactId>
+            <version>${mybatis.framework.cloud.starter.version}</version>
+        </dependency>
     </dependencies>
 </project>
