@@ -16,6 +16,7 @@
         <stream.framework.cloud.starter.version>1.0.0</stream.framework.cloud.starter.version>
         <feign.framework.cloud.starter.version>1.0.0</feign.framework.cloud.starter.version>
         <swagger.framework.cloud.starter.version>1.0.0</swagger.framework.cloud.starter.version>
+        <enums.framework.cloud.starter.version>1.0.0</enums.framework.cloud.starter.version>
     </properties>
 
     <modules>

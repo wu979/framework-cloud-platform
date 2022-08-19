@@ -16,6 +16,11 @@
     <dependencies>
         <dependency>
             <groupId>com.framework.cloud</groupId>
+            <artifactId>mybatis-framework-cloud-starter</artifactId>
+            <version>${mybatis.framework.cloud.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.framework.cloud</groupId>
             <artifactId>cache-framework-cloud-starter</artifactId>
             <version>${cache.framework.cloud.starter.version}</version>
         </dependency>

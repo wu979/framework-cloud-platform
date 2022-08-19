@@ -26,8 +26,8 @@
         </dependency>
         <dependency>
             <groupId>com.framework.cloud</groupId>
-            <artifactId>mybatis-framework-cloud-starter</artifactId>
-            <version>${mybatis.framework.cloud.starter.version}</version>
+            <artifactId>enums-framework-cloud-starter</artifactId>
+            <version>${enums.framework.cloud.starter.version}</version>
         </dependency>
     </dependencies>
 </project>

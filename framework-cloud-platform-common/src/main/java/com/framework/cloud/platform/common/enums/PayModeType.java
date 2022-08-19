@@ -24,7 +24,7 @@ public enum PayModeType implements BaseEnum<String> {
     WX_APPLET(3, "微信小程序支付"),
     WX_PAYMENT(4, "微信付款码支付"),
 
-    ZFB_APP(5, ""),
+    ZFB_APP(5, "支付宝唤醒支付"),
     ZFB_MOBILE(5, "支付宝手机网站支付"),
     ZFB_COMPUTER(5, "支付宝电脑网站支付"),
     ZFB_FACE(5, "支付宝刷脸支付"),
