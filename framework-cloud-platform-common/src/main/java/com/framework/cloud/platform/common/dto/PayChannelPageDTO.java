@@ -1,7 +1,7 @@
 package com.framework.cloud.platform.common.dto;
 
 import com.framework.cloud.common.base.BasePage;
-import com.framework.cloud.platform.common.enums.PayChannelType;
+import com.framework.cloud.enums.platform.PayChannelType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -2,7 +2,7 @@ package com.framework.cloud.platform.common.dto;
 
 import com.framework.cloud.common.group.Save;
 import com.framework.cloud.common.group.Update;
-import com.framework.cloud.platform.common.enums.PayModeType;
+import com.framework.cloud.enums.platform.PayModeType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

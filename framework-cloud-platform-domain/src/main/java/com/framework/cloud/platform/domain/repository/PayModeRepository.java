@@ -3,7 +3,7 @@ package com.framework.cloud.platform.domain.repository;
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.BaseRepository;
 import com.framework.cloud.platform.common.dto.PayModePageDTO;
-import com.framework.cloud.platform.common.enums.PayModeType;
+import com.framework.cloud.enums.platform.PayModeType;
 import com.framework.cloud.platform.common.vo.PayModeAvailableVO;
 import com.framework.cloud.platform.common.vo.PayModeInfoVO;
 import com.framework.cloud.platform.common.vo.PayModeListVO;

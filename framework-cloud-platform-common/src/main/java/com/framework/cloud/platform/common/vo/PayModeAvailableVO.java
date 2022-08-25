@@ -1,7 +1,7 @@
 package com.framework.cloud.platform.common.vo;
 
-import com.framework.cloud.platform.common.enums.PayChannelType;
-import com.framework.cloud.platform.common.enums.PayModeType;
+import com.framework.cloud.enums.platform.PayChannelType;
+import com.framework.cloud.enums.platform.PayModeType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

@@ -7,7 +7,7 @@ import com.framework.cloud.common.base.PageParam;
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.impl.BaseRepositoryImpl;
 import com.framework.cloud.platform.common.dto.PayModePageDTO;
-import com.framework.cloud.platform.common.enums.PayModeType;
+import com.framework.cloud.enums.platform.PayModeType;
 import com.framework.cloud.platform.common.vo.PayModeAvailableVO;
 import com.framework.cloud.platform.common.vo.PayModeInfoVO;
 import com.framework.cloud.platform.common.vo.PayModeListVO;
