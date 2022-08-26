@@ -44,7 +44,8 @@
 
     <select id="availableList" resultType="com.framework.cloud.platform.common.vo.PayModeAvailableVO">
         select
-            pm.id as mode_id, pm.mode_type, pc.id as channel_id, pc.name as channel_name, pc.type as channel_type
+            pm.id as mode_id, pm.mode_type, pc.id as channel_id,
+            pc.name as channel_name, pc.type as channel_type, pc.private_key
         from t_pay_mode pm
         inner join t_pay_channel pc on pm.channel_id = pc.id
         where pm.deleted = 1 and pc.deleted = 1

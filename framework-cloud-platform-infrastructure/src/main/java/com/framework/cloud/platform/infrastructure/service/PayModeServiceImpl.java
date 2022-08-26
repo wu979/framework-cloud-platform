@@ -8,10 +8,10 @@ import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.common.utils.AssertUtil;
 import com.framework.cloud.common.utils.CopierUtil;
 import com.framework.cloud.common.utils.StringUtil;
+import com.framework.cloud.enums.platform.PayChannelType;
 import com.framework.cloud.platform.common.constant.PlatformConstant;
 import com.framework.cloud.platform.common.dto.PayModeDTO;
 import com.framework.cloud.platform.common.dto.PayModePageDTO;
-import com.framework.cloud.enums.platform.PayChannelType;
 import com.framework.cloud.platform.common.msg.PlatformMsg;
 import com.framework.cloud.platform.common.vo.PayModeAvailableVO;
 import com.framework.cloud.platform.common.vo.PayModeInfoVO;
@@ -51,7 +51,8 @@ public class PayModeServiceImpl implements PayModeService {
 
     @Override
     public List<PayModeAvailableVO> availableList() {
-        return payModeRepository.availableList();
+        List<PayModeAvailableVO> availableList = payModeRepository.availableList();
+        return availableList;
     }
 
     @Override
