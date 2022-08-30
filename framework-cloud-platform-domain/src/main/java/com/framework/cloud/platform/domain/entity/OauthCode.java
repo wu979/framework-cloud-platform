@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_oauth_code")
-@ApiModel(value="授权码对象", description="授权码")
+@ApiModel(value = "授权码对象", description = "授权码")
 public class OauthCode {
 
     private static final long serialVersionUID = 1L;

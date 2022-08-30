@@ -14,7 +14,9 @@ import lombok.Getter;
 @SwaggerDisplayEnum(label = "scope")
 public enum ScopeType {
 
-    /** 全部 */
+    /**
+     * 全部
+     */
     ALL("all"),
 
     ;

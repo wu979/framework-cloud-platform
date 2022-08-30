@@ -17,7 +17,9 @@ import lombok.Getter;
 @SwaggerDisplayEnum
 public enum TenantStatus implements BaseEnum<String> {
 
-    /** code 第三方枚举 value 数据库 label 汉译 */
+    /**
+     * code 第三方枚举 value 数据库 label 汉译
+     */
     REVIEWED(0, "待审核"),
     REVIEW(1, "审核中"),
     NORMAL(2, "正常"),

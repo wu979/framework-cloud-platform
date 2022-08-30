@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_pay_mode")
-@ApiModel(value="支付方式对象", description="支付方式")
+@ApiModel(value = "支付方式对象", description = "支付方式")
 public class PayMode extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

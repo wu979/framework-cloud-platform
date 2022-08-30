@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_gateway_route")
-@ApiModel(value="动态路由对象", description="动态路由")
+@ApiModel(value = "动态路由对象", description = "动态路由")
 public class GatewayRoute extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

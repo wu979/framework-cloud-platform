@@ -1,10 +1,8 @@
 package com.framework.cloud.platform.infrastructure.converter;
 
-import com.framework.cloud.platform.common.vo.*;
+import com.framework.cloud.platform.common.vo.SettingInfoVO;
 import com.framework.cloud.platform.domain.entity.Setting;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
 /**
  * 租户配置 转换器

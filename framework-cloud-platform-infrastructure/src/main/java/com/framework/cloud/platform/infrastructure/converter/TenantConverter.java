@@ -33,6 +33,7 @@ public interface TenantConverter {
      * @return 详情
      */
     TenantVO infoByCode(Tenant tenant);
+
     /**
      * 租户 详情转换
      *

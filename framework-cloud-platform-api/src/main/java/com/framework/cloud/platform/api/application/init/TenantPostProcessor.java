@@ -44,7 +44,7 @@ public class TenantPostProcessor implements ApplicationListener<ApplicationIniti
             TenantVO value = row.getValue();
             localCache.put(key, value);
             redisCache.put(key, value, PlatformConstant.TENANT_TIME, TimeUnit.MINUTES);
-            count ++;
+            count++;
         }
         log.info("Successfully initialized " + count + " tenants");
     }

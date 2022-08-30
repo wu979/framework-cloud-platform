@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_tenant")
-@ApiModel(value="租户对象", description="租户")
+@ApiModel(value = "租户对象", description = "租户")
 public class Tenant extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_setting")
-@ApiModel(value="租户配置对象", description="租户配置")
+@ApiModel(value = "租户配置对象", description = "租户配置")
 public class Setting {
 
     private static final long serialVersionUID = 1L;

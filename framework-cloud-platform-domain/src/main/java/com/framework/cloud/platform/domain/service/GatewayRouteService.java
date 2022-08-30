@@ -59,7 +59,7 @@ public interface GatewayRouteService {
     /**
      * 启用/禁用
      *
-     * @param id 主键
+     * @param id     主键
      * @param enable 启、禁用
      * @return bool
      */

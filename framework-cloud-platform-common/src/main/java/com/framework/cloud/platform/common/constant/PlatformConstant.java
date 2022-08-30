@@ -1,8 +1,6 @@
 package com.framework.cloud.platform.common.constant;
 
 /**
- *
- *
  * @author wusiwei
  */
 public class PlatformConstant {

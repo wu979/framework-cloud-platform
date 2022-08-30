@@ -14,13 +14,21 @@ import lombok.Getter;
 @SwaggerDisplayEnum(label = "approve")
 public enum ApproveType {
 
-    /** 不允许 */
+    /**
+     * 不允许
+     */
     FALSE("false"),
-    /** 允许 */
+    /**
+     * 允许
+     */
     TRUE("true"),
-    /** 读 */
+    /**
+     * 读
+     */
     READ("read"),
-    /** 写 */
+    /**
+     * 写
+     */
     WRITE("write"),
     ;
 

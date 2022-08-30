@@ -7,9 +7,13 @@ package com.framework.cloud.platform.common.enums;
  */
 public enum SwitchType {
 
-    /** 开 */
+    /**
+     * 开
+     */
     OPEN,
 
-    /** 关 */
+    /**
+     * 关
+     */
     CLOSE
 }
