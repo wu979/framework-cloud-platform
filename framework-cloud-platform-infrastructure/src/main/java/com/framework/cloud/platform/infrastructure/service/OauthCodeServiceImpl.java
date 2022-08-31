@@ -3,6 +3,7 @@ package com.framework.cloud.platform.infrastructure.service;
 import cn.hutool.core.util.ObjectUtil;
 import com.framework.cloud.common.exception.BizException;
 import com.framework.cloud.common.utils.CopierUtil;
+import com.framework.cloud.common.utils.LocalDateUtil;
 import com.framework.cloud.platform.common.dto.OauthCodeDTO;
 import com.framework.cloud.platform.common.msg.PlatformMsg;
 import com.framework.cloud.platform.common.vo.OauthCodeInfoVO;
@@ -41,9 +42,11 @@ public class OauthCodeServiceImpl implements OauthCodeService {
 
     @Override
     public boolean save(OauthCodeDTO param) {
+        LocalDateTime now = LocalDateTime.now();
         OauthCode oauthCode = new OauthCode();
         CopierUtil.copyProperties(param, oauthCode);
-        oauthCode.setExpiresTime(LocalDateTime.now().plusMinutes(10));
+        oauthCode.setExpiresTime(now.plusMinutes(10));
+        oauthCode.setCreateTime(LocalDateUtil.getTimeMillis(now));
         return oauthCodeRepository.saveOrUpdate(oauthCode);
     }
 
