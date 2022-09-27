@@ -10,6 +10,7 @@ import com.framework.cloud.platform.common.dto.PayChannelPageDTO;
 import com.framework.cloud.platform.common.vo.PayChannelInfoVO;
 import com.framework.cloud.platform.common.vo.PayChannelPageVO;
 import com.framework.cloud.platform.domain.service.PayChannelService;
+import io.seata.core.context.RootContext;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -49,6 +50,8 @@ public class PayChannelController {
     @ApiOperation(value = "支付渠道新增")
     @PostMapping(value = "/save")
     public Result<Boolean> save(@ApiParam("支付渠道") @Valid @Validated(Save.class) @RequestBody PayChannelDTO param) {
+        String xid = RootContext.getXID();
+        System.out.println(xid);
         return R.success(payChannelService.save(param));
     }
 
