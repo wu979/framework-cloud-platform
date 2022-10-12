@@ -2,7 +2,7 @@ package com.framework.cloud.platform.api.application.init;
 
 import com.framework.cloud.cache.cache.LocalCache;
 import com.framework.cloud.cache.cache.RedisCache;
-import com.framework.cloud.core.event.ApplicationInitializingEvent;
+import com.framework.cloud.event.application.ApplicationInitializingEvent;
 import com.framework.cloud.platform.common.constant.PlatformConstant;
 import com.framework.cloud.platform.common.vo.TenantVO;
 import com.framework.cloud.platform.domain.service.TenantService;
