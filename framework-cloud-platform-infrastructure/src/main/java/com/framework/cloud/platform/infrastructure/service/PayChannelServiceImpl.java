@@ -17,7 +17,10 @@ import com.framework.cloud.platform.domain.entity.PayChannel;
 import com.framework.cloud.platform.domain.repository.PayChannelRepository;
 import com.framework.cloud.platform.domain.service.PayChannelService;
 import lombok.AllArgsConstructor;
+import org.apache.shardingsphere.transaction.annotation.ShardingSphereTransactionType;
+import org.apache.shardingsphere.transaction.core.TransactionType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 支付渠道 服务实现类
@@ -42,6 +45,7 @@ public class PayChannelServiceImpl implements PayChannelService {
     }
 
     @Override
+    @ShardingSphereTransactionType(TransactionType.BASE)
     public boolean save(PayChannelDTO param) {
         PayChannelInfoVO exist = payChannelRepository.info(param.getCode());
         AssertUtil.nonNull(exist, PlatformMsg.PAY_CHANNEL_EXIST.getMsg());

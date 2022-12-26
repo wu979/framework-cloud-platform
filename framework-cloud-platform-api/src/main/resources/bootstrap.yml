@@ -39,3 +39,4 @@ spring:
           - {"dataId" : executors.yml, "group" : COMMON, "refresh" : true}
           - {"dataId" : cache.yml, "group" : COMMON, "refresh" : true}
           - {"dataId" : rabbit.yml, "group" : COMMON, "refresh" : true}
+          - {"dataId" : seata.yml, "group" : COMMON, "refresh" : true}
