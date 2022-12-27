@@ -10,10 +10,12 @@ import com.framework.cloud.common.utils.CopierUtil;
 import com.framework.cloud.platform.common.constant.PlatformConstant;
 import com.framework.cloud.platform.common.dto.PayChannelDTO;
 import com.framework.cloud.platform.common.dto.PayChannelPageDTO;
+import com.framework.cloud.platform.common.dto.PayOrderDTO;
 import com.framework.cloud.platform.common.msg.PlatformMsg;
 import com.framework.cloud.platform.common.vo.PayChannelInfoVO;
 import com.framework.cloud.platform.common.vo.PayChannelPageVO;
 import com.framework.cloud.platform.domain.entity.PayChannel;
+import com.framework.cloud.platform.domain.feign.PayFeignService;
 import com.framework.cloud.platform.domain.repository.PayChannelRepository;
 import com.framework.cloud.platform.domain.service.PayChannelService;
 import lombok.AllArgsConstructor;
@@ -31,6 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class PayChannelServiceImpl implements PayChannelService {
 
+    private final PayFeignService payFeignService;
     private final PayChannelRepository payChannelRepository;
 
     @Override
@@ -51,7 +54,11 @@ public class PayChannelServiceImpl implements PayChannelService {
         AssertUtil.nonNull(exist, PlatformMsg.PAY_CHANNEL_EXIST.getMsg());
         PayChannel payChannel = new PayChannel();
         CopierUtil.copyProperties(param, payChannel);
-        return payChannelRepository.save(payChannel);
+        boolean save = payChannelRepository.save(payChannel);
+        if (save) {
+            payFeignService.save(new PayOrderDTO());
+        }
+        return save;
     }
 
     @Override
